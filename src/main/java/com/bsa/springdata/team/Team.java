@@ -12,7 +12,6 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
-// TODO: Map table teams to this entity - done
 @Entity
 @Data
 @Builder

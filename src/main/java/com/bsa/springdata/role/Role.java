@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-// TODO: Map table roles to this entity - done
 @Entity
 @Data
 @Builder

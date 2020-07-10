@@ -11,8 +11,8 @@ import java.util.UUID;
 public interface RoleRepository extends JpaRepository<Role, UUID> {
     @Modifying
     @Transactional
-    @Query("delete from Role as r " +
-            "where (r.code like :role " +
-            "and r.users.size = 0)")
+    @Query("DELETE FROM Role AS r " +
+            "WHERE (r.code LIKE :role " +
+            "AND SIZE(r.users) = 0)")
     void deleteRole(@Param("role") String role);
 }

@@ -9,7 +9,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
-// TODO: Map table technologies to this entity - done
 @Entity
 @Data
 @Builder

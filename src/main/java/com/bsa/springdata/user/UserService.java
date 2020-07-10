@@ -1,14 +1,11 @@
 package com.bsa.springdata.user;
 
-import com.bsa.springdata.office.Office;
-import com.bsa.springdata.office.OfficeDto;
 import com.bsa.springdata.office.OfficeRepository;
 import com.bsa.springdata.team.TeamRepository;
 import com.bsa.springdata.user.dto.CreateUserDto;
 import com.bsa.springdata.user.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -65,9 +62,6 @@ public class UserService {
     }
 
     public List<UserDto> findByLastName(String lastName, int page, int size) {
-        // TODO: done
-        //  Use a single query.
-        //  Use class Sort to sort users by last name. Try to avoid @Query annotation here
         return userRepository.findByLastNameContainingIgnoreCase(
                 lastName,
                 PageRequest.of(
@@ -80,8 +74,6 @@ public class UserService {
     }
 
     public List<UserDto> findByCity(String city) {
-        // TODO: done
-        //  Use a single query. Sort users by last name
         return userRepository
                 .findByCity(city)
                 .stream()
@@ -90,8 +82,6 @@ public class UserService {
     }
 
     public List<UserDto> findByExperience(int experience) {
-        // TODO: done
-        //  Use a single query. Sort users by experience by descending. Try to avoid @Query annotation here
         return userRepository
                 .findByExperienceGreaterThanEqualOrderByExperienceDesc(experience)
                 .stream()
@@ -100,8 +90,6 @@ public class UserService {
     }
 
     public List<UserDto> findByRoomAndCity(String city, String room) {
-        // TODO: done
-        //  Use a single query. Use class Sort to sort users by last name.
         return userRepository
                 .findByRoomAndCity(city, room, Sort.sort(User.class).by(User::getLastName).ascending())
                 .stream()
@@ -110,8 +98,6 @@ public class UserService {
     }
 
     public int deleteByExperience(int experience) {
-        // TODO: done
-        //  Use a single query. Return a number of deleted rows
         return userRepository.deleteByExperience(experience);
     }
 }

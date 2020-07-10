@@ -15,9 +15,9 @@ public interface TechnologyRepository extends JpaRepository<Technology, UUID> {
 
     @Modifying
     @Transactional
-    @Query("update Technology t " +
-            "set t.name = :newTech " +
-            "where t.id in :techIds and t.name like :oldTech")
+    @Query("UPDATE Technology t " +
+            "SET t.name = :newTech " +
+            "WHERE t.id IN :techIds AND t.name LIKE :oldTech")
     void updateTechnology(@Param("oldTech") String oldTechnologyName,
                           @Param("newTech") String newTechnologyName,
                           @Param("techIds") List<UUID> technologyId);

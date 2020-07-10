@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-// TODO: Map table users to this entity - done
 @Entity
 @Data
 @NoArgsConstructor

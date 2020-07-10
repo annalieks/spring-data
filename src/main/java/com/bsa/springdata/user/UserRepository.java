@@ -13,23 +13,23 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<User, UUID> {
     List<User> findByLastNameContainingIgnoreCase(String lastName, Pageable pageable);
 
-    @Query("select u from User u " +
-            "inner join u.office o " +
-            "on (o.city like :city) " +
-            "order by u.lastName asc")
+    @Query("SELECT u FROM User u " +
+            "INNER JOIN u.office o " +
+            "ON (o.city LIKE :city) " +
+            "ORDER BY u.lastName")
     List<User> findByCity(@Param("city") String city);
 
     List<User> findByExperienceGreaterThanEqualOrderByExperienceDesc(int experience);
 
-    @Query("select u from User u " +
-            "inner join u.office o " +
-            "on (o.city like :city) " +
-            "inner join u.team " +
-            "on (u.team.room like :room)")
+    @Query("SELECT u FROM User u " +
+            "INNER JOIN u.office o " +
+            "ON (o.city LIKE :city) " +
+            "INNER JOIN u.team " +
+            "ON (u.team.room LIKE :room)")
     List<User> findByRoomAndCity(@Param("city") String city, @Param("room") String room, Sort sort);
 
     @Modifying
-    @Query("delete from User as u " +
-            "where u.experience < :experience")
+    @Query("DELETE FROM User " +
+            "WHERE experience < :experience")
     int deleteByExperience(@Param("experience") int experience);
 }
