@@ -4,7 +4,7 @@ package com.bsa.springdata.project.dto;
 //  If you don't use native query replace this interface with a simple POJO
 public interface ProjectSummaryDto {
     String getName();
-    long getTeamsNumber();
-    long getDevelopersNumber();
+    Long getTeamsNumber();
+    Long getDevelopersNumber();
     String getTechnologies();
 }
